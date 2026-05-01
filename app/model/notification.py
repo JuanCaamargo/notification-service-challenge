@@ -6,6 +6,15 @@ from typing import Protocol, runtime_checkable
 
 from app.services.util import generate_unique_id
 
+class NotificationError(Exception):
+    pass
+
+class ChannelUnavailableError(NotificationError):
+    pass
+
+class DeliveryError(NotificationError):
+    pass
+
 class NotificationChannel(ABC):
 
     @abstractmethod
@@ -19,6 +28,9 @@ class NotificationChannel(ABC):
     @abstractmethod
     def is_available(self) -> bool:
         pass
+
+
+
 
 class ConsoleChannel(NotificationChannel):
 

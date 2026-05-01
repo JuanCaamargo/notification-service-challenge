@@ -1,7 +1,6 @@
 import os
 from dataclasses import dataclass, field
 from datetime import datetime
-from email import message
 from typing import Protocol, runtime_checkable
 
 from app.services.util import generate_unique_id
@@ -18,7 +17,7 @@ class ConsoleChannel(NotificationChannel):
             raise DeliveryError()
 
     def get_channel_name(self) -> str:
-        return "Console"
+        return "console"
 
     def is_available(self) -> bool:
         return True
